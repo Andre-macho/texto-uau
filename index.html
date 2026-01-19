@@ -1,0 +1,49 @@
+index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Texto UAU</title>
+</head>
+<body style="font-family: Arial; text-align:center; padding:40px">
+
+  <h1>Texto UAU</h1>
+  <p>Gere textos de venda prontos em segundos</p>
+
+  <button onclick="copiarEIr()" style="
+    padding:16px 28px;
+    font-size:18px;
+    cursor:pointer;
+    border-radius:8px;
+  ">
+    COPIAR PROMPT E ABRIR KIMI
+  </button>
+
+  <p id="msg" style="margin-top:20px;color:green;"></p>
+
+  <script>
+    const PROMPT = `
+👉 INSTRUÇÕES AO USUÁRIO:
+Crie um texto de venda persuasivo seguindo estes passos:
+
+1. Pergunte qual é o produto
+2. Pergunte para quem ele vende
+3. Pergunte onde será usado o texto (WhatsApp, Instagram, anúncio)
+4. Gere um texto claro, simples e convincente
+
+Nunca explique o processo.
+Nunca mostre bastidores.
+Entregue o texto pronto para uso.
+    `;
+
+    function copiarEIr() {
+      navigator.clipboard.writeText(PROMPT).then(() => {
+        document.getElementById("msg").innerText =
+          "✅ Prompt copiado! Agora é só colar no Kimi (CTRL+V)";
+        window.open("https://kimi.com", "_blank");
+      });
+    }
+  </script>
+
+</body>
+</html>
