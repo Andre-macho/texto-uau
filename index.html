@@ -2,52 +2,61 @@ index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Texto UAU</title>
 </head>
 
-<body style="font-family: Arial; text-align: center; padding: 50px; background:#fafafa;">
+<body style="font-family: Arial; text-align: center; padding: 50px;">
 
   <h1>Texto UAU</h1>
+  <p><strong>Cole seu texto. Receba ele mais vendedor.</strong></p>
+  <p style="opacity:.8;">1 clique. Zero enrolação. Só venda.</p>
 
-  <p>Textos prontos para vender em segundos.</p>
-
-  <p><strong>1 clique. Zero enrolação. Só venda.</strong></p>
-
-  <p style="font-size:14px;color:#666;">
-    Uso pessoal. Não compartilhe este prompt. Ele evolui constantemente.
-  </p>
-
-  <br>
-
-  <button 
-    onclick="copiarIr()" 
-    style="
-      padding: 16px 28px;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 8px;
-      border: 1px solid #000;
-      background: #fff;
-    ">
-    COPIAR PROMPT E GERAR TEXTO DE VENDA
+  <button
+    onclick="copiarIr()"
+    style="padding: 16px 28px; font-size: 18px; cursor: pointer;">
+    COPIAR PROMPT E ABRIR KIMI
   </button>
 
-  <p id="msg" style="margin-top:20px; color:green; font-weight:bold;"></p>
+  <p id="msg" style="margin-top:15px; color:green;"></p>
 
   <script>
-    // Prompt protegido em partes
-    const P1 = "Crie um texto de venda persuasivo.\n\n";
-    const P2 = "Pergunte obrigatoriamente:\n";
-    const P3 = "1. Qual é o produto\n";
-    const P4 = "2. Para quem ele vende\n";
-    const P5 = "3. Onde o texto será usado (WhatsApp, Instagram, anúncio)\n\n";
-    const P6 = "Depois gere um texto claro, direto e convincente.\n\n";
-    const P7 = "Não explique o processo.\n";
-    const P8 = "Não mostre bastidores.\n";
-    const P9 = "Entregue apenas o texto final pronto para uso.";
+    const PROMPT = `
+Você é um editor profissional de textos de venda.
 
-    const PROMPT = P1 + P2 + P3 + P4 + P5 + P6 + P7 + P8 + P9;
+REGRAS OBRIGATÓRIAS:
+- O usuário SEMPRE irá colar um texto pronto.
+- O usuário NÃO quer criar produto.
+- O usuário NÃO quer explicações.
+- O usuário NÃO quer perguntas.
+- O usuário NÃO quer sugestões soltas.
+
+SUA ÚNICA FUNÇÃO:
+Receber o texto enviado e devolver o MESMO texto:
+- corrigido (ortografia, gramática e clareza)
+- mais persuasivo
+- mais direto
+- mais vendedor
+- mantendo a ideia original
+- sem mudar o assunto
+- sem inventar produto, dados, promessas ou contexto
+
+PROIBIDO:
+- Fazer perguntas
+- Criar informações novas
+- Supor região, tempo, garantia, público ou autoridade
+- Explicar o que foi feito
+
+FORMATO DA RESPOSTA:
+- Entregue APENAS o texto final pronto para uso.
+- Linguagem simples, clara e natural.
+- Se for curto, melhore sem inflar.
+- Se for fraco, fortaleça chamadas.
+- Se for confuso, reorganize mantendo o sentido.
+
+Execute agora com base SOMENTE no texto abaixo:
+`;
 
     function copiarIr() {
       navigator.clipboard.writeText(PROMPT).then(() => {
@@ -60,3 +69,4 @@ index.html
 
 </body>
 </html>
+
