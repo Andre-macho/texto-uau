@@ -2,60 +2,95 @@ index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Texto UAU</title>
 </head>
 
-<body style="font-family: Arial; text-align: center; padding: 50px;">
+<body style="font-family: Arial; text-align: center; padding: 50px; background:#fafafa;">
 
-  <h1>Texto UAU</h1>
-  <p>Textos prontos para vender em segundos.</p>
-  <p><strong>1 clique. Zero enrolação. Só venda.</strong></p>
+  <h1 style="margin-bottom: 10px;">Texto UAU</h1>
+  <p style="margin-top: 0; opacity: .85;">Cole seu texto. Receba ele mais vendedor.</p>
+  <p style="margin-top: 6px;"><strong>1 clique. Zero enrolação. Só venda.</strong></p>
+  <p style="font-size: 14px; color: #666; margin-top: 10px;">
+    Uso pessoal. Não compartilhe. A ferramenta evolui constantemente.
+  </p>
 
-  <button 
-    onclick="copiarIr()" 
-    style="padding: 16px 28px; font-size: 18px; cursor: pointer;">
-    COPIAR PROMPT E ABRIR KIMI
-  </button>
+  <div style="margin-top: 24px;">
+    <button
+      onclick="copiarIr()"
+      style="
+        padding: 16px 28px;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 10px;
+        border: 1px solid #111;
+        background: #fff;
+      ">
+      COPIAR PROMPT E ABRIR KIMI
+    </button>
 
-  <p id="msg" style="margin-top:15px; color:green;"></p>
+    <p id="msg" style="margin-top: 18px; color: green; font-weight: 700;"></p>
+    <p style="margin-top: 6px; font-size: 14px; color:#444;">
+      No Kimi, cole com <strong>CTRL + V</strong> e depois cole o seu texto para revisar.
+    </p>
+  </div>
 
   <script>
-    const PROMPT = `
-Você é um editor profissional de textos de venda.
+    // ✅ Proteção prática: prompt montado por partes (dificulta cópia em bloco)
+    // (Obs.: front-end nunca será 100% impossível de copiar por quem é MUITO técnico,
+    // mas isso remove a facilidade e mantém o comportamento do cérebro intacto.)
 
-REGRAS OBRIGATÓRIAS:
-- O usuário SEMPRE irá colar um texto pronto.
-- O usuário NÃO quer criar produto.
-- O usuário NÃO quer explicações.
-- O usuário NÃO quer perguntas.
-- O usuário NÃO quer sugestões soltas.
+    const A  = "Você é um editor profissional de textos de venda.\n\n";
 
-SUA ÚNICA FUNÇÃO:
-Receber o texto enviado e devolver o MESMO texto:
-- corrigido
-- mais persuasivo
-- mais direto
-- mais vendedor
-- mantendo a ideia original
-- sem inventar informações
+    const B  = "REGRAS OBRIGATÓRIAS:\n";
+    const C  = "- O usuário SEMPRE irá colar um texto pronto.\n";
+    const D  = "- O usuário NÃO quer criar produto.\n";
+    const E  = "- O usuário NÃO quer explicações.\n";
+    const F  = "- O usuário NÃO quer perguntas.\n";
+    const G  = "- O usuário NÃO quer sugestões soltas.\n\n";
 
-PROIBIDO:
-- Fazer perguntas
-- Criar dados novos
-- Supor região, tempo, garantia ou autoridade
-- Explicar o que foi feito
+    const H  = "SUA ÚNICA FUNÇÃO:\n";
+    const I  = "Receber o texto enviado e devolver o MESMO texto:\n";
+    const J  = "- corrigido (ortografia, gramática e clareza)\n";
+    const K  = "- mais persuasivo\n";
+    const L  = "- mais direto\n";
+    const M  = "- mais vendedor\n";
+    const N  = "- mantendo a ideia original\n";
+    const O  = "- sem mudar o assunto\n";
+    const P  = "- sem inventar produto\n";
+    const Q  = "- sem adicionar informações que não existam no texto\n\n";
 
-FORMATO:
-Entregue APENAS o texto final pronto para uso.
+    const R  = "IMPORTANTE:\n";
+    const S  = "- NÃO faça perguntas ao usuário.\n";
+    const T  = "- NÃO peça mais informações.\n";
+    const U  = "- NÃO mude o objetivo do texto.\n";
+    const V  = "- NÃO explique o que você fez.\n\n";
 
-Execute agora com base SOMENTE no texto abaixo:
-`;
+    const W  = "FORMATO DA RESPOSTA:\n";
+    const X  = "1) Mostre apenas o TEXTO FINAL PRONTO.\n";
+    const Y  = "2) Use linguagem simples, clara e natural.\n";
+    const Z  = "3) Se o texto for curto, melhore sem aumentar demais.\n";
+    const AA = "4) Se o texto for fraco, fortaleça chamadas e clareza.\n";
+    const AB = "5) Se o texto for confuso, reorganize mantendo o sentido.\n\n";
+
+    const AC = "Agora execute sua função com base SOMENTE no texto abaixo:\n";
+
+    const PROMPT =
+      A + B + C + D + E + F + G +
+      H + I + J + K + L + M + N + O + P + Q +
+      R + S + T + U + V +
+      W + X + Y + Z + AA + AB +
+      AC;
 
     function copiarIr() {
       navigator.clipboard.writeText(PROMPT).then(() => {
         document.getElementById("msg").innerText =
-          "✅ Prompt copiado. Cole no Kimi (CTRL+V)";
+          "✅ Copiado! Agora volte no Kimi e cole (CTRL+V).";
+        window.open("https://kimi.com", "_blank");
+      }).catch(() => {
+        document.getElementById("msg").innerText =
+          "⚠️ Não consegui copiar automaticamente. Copie manualmente e cole no Kimi.";
         window.open("https://kimi.com", "_blank");
       });
     }
